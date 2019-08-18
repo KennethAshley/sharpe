@@ -2,10 +2,10 @@
 
 ## Todo
 
-* [] Add [React-Helmet](https://github.com/nfl/react-helmet) for SEO
-* [] Add more tests
-* [] Add more styles
-* [] Make responsive
+- Add [React-Helmet](https://github.com/nfl/react-helmet) for SEO
+- Add more tests
+- Add more styles
+- Make responsive
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
