@@ -21,7 +21,7 @@ const currencies = [
     prices: [100, 200],
     sharpeRatio: 0.999,
     avgDailyReturn: 0.50,
-  }
+  },
 ];
 
 it('renders the Table component without crashing', () => {

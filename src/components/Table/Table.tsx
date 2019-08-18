@@ -20,7 +20,7 @@ interface TableProps {
 };
 
 function Table(props: TableProps) {
-  const [currencies, setCurrencies] = useState<Currencies>({ order: '', list: [] })
+  const [currencies, setCurrencies] = useState<Currencies>({ order: '', list: [] });
 
   useEffect(() => {
     const adjustedCurrencies = props.currencies.map(currency => {
@@ -36,7 +36,7 @@ function Table(props: TableProps) {
 
     setCurrencies({
       order: '',
-      list: adjustedCurrencies
+      list: adjustedCurrencies,
     });
   }, [ props.currencies ]);
 

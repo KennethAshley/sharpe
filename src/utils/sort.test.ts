@@ -17,7 +17,7 @@ const people: Person[] = [
   {
     name: 'tom',
     age: 7,
-  }
+  },
 ];
 
 it('sorts an array of objects in asc order', () => {
@@ -54,7 +54,7 @@ it('sorts an array of objects in desc order', () => {
     {
       name: 'tom',
       age: 7,
-    }
-  ])
+    },
+  ]);
 });
 

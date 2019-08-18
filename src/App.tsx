@@ -56,6 +56,7 @@ const App: React.FC = () => {
     return (
       <div className="loader">
         <img src={Logo} alt="Loading..." className="App-logo" />
+        <div>Loading...</div>
       </div>
     );
   }
