@@ -1,5 +1,13 @@
 # Kenneth's Super Awesome Asset Performance List
 
+## Installation
+
+1. `yarn` or `npm install`
+2. Copy .env.example to .env and add Nomics API key
+3. `yarn start` or `npm install`
+4. Build!
+
+
 ## Todo
 
 - Add [React-Helmet](https://github.com/nfl/react-helmet) for SEO
