@@ -14,15 +14,22 @@ import Logo from './logo.svg';
 import './App.css';
 
 interface RequestParams {
-  [key: string]: string | undefined;
+  readonly [key: string]: string | undefined;
   start: string;
   end: string;
 };
 
+interface Currency {
+  currency: string;
+  prices: number[];
+  sharpeRatio: number;
+	avgDailyReturn: number;
+};
+
 const App: React.FC = () => {
-  const [currencies, setCurrencies] = useState([]);
-  const [error, setError] = useState('');
-  const [isLoading, setLoading] = useState(false);
+  const [currencies, setCurrencies] = useState<Currency[]>([]);
+  const [error, setError] = useState<string>('');
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   /* Due to time, a second deconstructed variable in which
    * we can name 'setParams' was ommited. We can use this
@@ -34,12 +41,12 @@ const App: React.FC = () => {
   });
 
   useEffect(() => {
-    const getSparkline = async () => {
-      const query = queryString({ key, ...params });
+    const getSparkline = async (): Promise<void> => {
+      const query: string = queryString({ key , ...params });
       setLoading(true);
 
       try {
-        const results = await fetchResults(`${baseUrl}?${query}`);
+        const results: Currency[] = await fetchResults(`${baseUrl}?${query}`);
 
         setCurrencies(results);
         setLoading(false);

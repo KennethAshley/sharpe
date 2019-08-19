@@ -5,10 +5,10 @@ import { sort } from '../../utils';
 
 interface Currencies {
   order: string;
-  list: List[];
+  currencies: Currency[];
 }
 
-interface List {
+interface Currency {
   currency: string;
   prices: number[];
   sharpeRatio: number;
@@ -16,16 +16,16 @@ interface List {
 };
 
 interface TableProps {
-  currencies: List[];
+  currencies: Currency[];
 };
 
 function Table(props: TableProps) {
-  const [currencies, setCurrencies] = useState<Currencies>({ order: '', list: [] });
+  const [currencies, setCurrencies] = useState<Currencies>({ order: '', currencies: [] });
 
   useEffect(() => {
-    const adjustedCurrencies = props.currencies.map(currency => {
-			const sharpeRatio = (math.mean(currency.prices) / math.std(currency.prices));
-			const avgDailyReturn = currency.prices.reduce((acc: number, val: number) => acc + Number(val), 0);
+    const adjustedCurrencies: Currency[] = props.currencies.map(currency => {
+      const sharpeRatio: number = (math.mean(currency.prices) / math.std(currency.prices));
+      const avgDailyReturn: number = currency.prices.reduce((acc: number, val: number) => acc + Number(val), 0);
 
       return {
         ...currency,
@@ -36,16 +36,16 @@ function Table(props: TableProps) {
 
     setCurrencies({
       order: '',
-      list: adjustedCurrencies,
+      currencies: adjustedCurrencies,
     });
-  }, [ props.currencies ]);
+  }, [props.currencies]);
 
   function onSort(label: string, order: string): void {
-    const sortedCurrencies = sort(label, order, currencies.list);
+    const sortedCurrencies: Currency[] = sort(label, order, currencies.currencies);
 
     setCurrencies({
       order,
-      list: sortedCurrencies
+      currencies: sortedCurrencies
     });
   }
 
@@ -58,12 +58,12 @@ function Table(props: TableProps) {
 							<div className="th-content">
 								Currency
 								<div>
-									<button onClick={() => onSort('currency', 'asc')}>
+                  <button onClick={(): void => onSort('currency', 'asc')}>
 										<small>
 											ASC
 										</small>
 									</button>
-									<button onClick={() => onSort('currency', 'desc')}>
+                  <button onClick={(): void => onSort('currency', 'desc')}>
 										<small>
 											DESC
 										</small>
@@ -75,12 +75,12 @@ function Table(props: TableProps) {
 							<div className="th-content">
 								Reward to Ratio
 								<div className="th-actions">
-									<button onClick={() => onSort('sharpeRatio', 'asc')}>
+                  <button onClick={(): void => onSort('sharpeRatio', 'asc')}>
 										<small>
 											ASC
 										</small>
 									</button>
-									<button onClick={() => onSort('sharpeRatio', 'desc')}>
+                  <button onClick={(): void => onSort('sharpeRatio', 'desc')}>
 										<small>
 											DESC
 										</small>
@@ -92,7 +92,7 @@ function Table(props: TableProps) {
           </tr>
         </thead>
         <tbody>
-          { currencies.list.map((currency, index) => (
+          { currencies.currencies.map((currency, index) => (
               <tr key={`currency_${index}`}>
                 <td>{currency.currency}</td>
                 <td>{currency.sharpeRatio}</td>

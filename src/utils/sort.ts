@@ -1,5 +1,5 @@
 const sort = (label: string, order: string, arr: any[]): any[] =>  {
-  const sortedArray = arr.sort((a, b) => {
+  const sortedArray: any[] = arr.sort((a, b) => {
 
     /* i could use an ternary to determine the
      * return value but if statements were chosen
