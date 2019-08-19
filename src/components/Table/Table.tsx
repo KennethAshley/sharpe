@@ -19,7 +19,7 @@ interface TableProps {
   currencies: Currency[];
 };
 
-function Table(props: TableProps) {
+function Table(props: TableProps): JSX.Element {
   const [currencies, setCurrencies] = useState<Currencies>({ order: '', currencies: [] });
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function Table(props: TableProps) {
 
     setCurrencies({
       order,
-      currencies: sortedCurrencies
+      currencies: sortedCurrencies,
     });
   }
 
